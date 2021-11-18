@@ -8,24 +8,28 @@ public class PlatformDetector : MonoBehaviour
     platform in advance to avoid gamepad axis conflicts.
     */
 
-    [SerializeField] bool StoredInPP = false;
-    [SerializeField] int LinuxWorkAround = 0;
+    [SerializeField] bool storedInPP = false;
+    [SerializeField] int linuxWorkAround = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         if(PlayerPrefs.GetInt("storageflag") == 1)
         {
-            StoredInPP = true;
+            storedInPP = true;
         }
 
-        if(!StoredInPP)
+        if(!storedInPP)
         {
             Debug.Log(Application.platform);
             if(Application.platform == RuntimePlatform.LinuxEditor || Application.platform == RuntimePlatform.LinuxPlayer)
             {
-                LinuxWorkAround = 1;
+                linuxWorkAround = 1;
             }
+        }
+        else
+        {
+            PlayerPrefs.SetInt("linuxWorkaround", 1);
         }
     }
 }
