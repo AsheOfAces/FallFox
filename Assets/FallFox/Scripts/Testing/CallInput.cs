@@ -25,6 +25,14 @@ public class CallInput : MonoBehaviour
     [SerializeField]TMPro.TMP_Text RTrig;
     [SerializeField]Image RTrigIMG;
 
+    //Dpad
+    [SerializeField]Image DpadNorth;
+    [SerializeField]Image DpadSouth;
+    [SerializeField]Image DpadWest;
+    [SerializeField]Image DpadEast;
+    [SerializeField]TMPro.TMP_Text DpadH;
+    [SerializeField]TMPro.TMP_Text DpadV;
+
     
     // Update is called once per frame
     void Update()
@@ -54,7 +62,7 @@ public class CallInput : MonoBehaviour
         }
 
         //Left Trigger
-        LTrig.text = "Trigger Value: " + ff.GetLeftTrigger().ToString();
+        LTrig.text = ff.GetLeftTrigger().ToString();
         if(ff.GetLeftTrigger() != 0f)
         {
             LTrigIMG.enabled = true;
@@ -66,6 +74,50 @@ public class CallInput : MonoBehaviour
 
 
         //Right Trigger
-        
+        RTrig.text = ff.GetRightTrigger().ToString();
+        if(ff.GetRightTrigger() != 0f)
+        {
+            RTrigIMG.enabled = true;
+        }
+        else
+        {
+            RTrigIMG.enabled = false;
+        }        
+
+        //Dpad
+        if(ff.GetDPad().x==1)
+        {
+            PurgeDpadSprites();
+            DpadEast.enabled = true;
+        }
+        else if(ff.GetDPad().x ==-1)
+        {
+            PurgeDpadSprites();
+            DpadWest.enabled = true;
+        }
+        else if(ff.GetDPad().y ==-1)
+        {
+            PurgeDpadSprites();
+            DpadSouth.enabled = true;
+        }
+        else if(ff.GetDPad().y==1)
+        {
+            PurgeDpadSprites();
+            DpadNorth.enabled = true;
+        }
+        else
+        {
+            PurgeDpadSprites();
+        }
+        DpadH.text = "H: " + ff.GetDPad().x;
+        DpadV.text = "V: " + ff.GetDPad().y;
+    }
+
+    void PurgeDpadSprites()
+    {
+        DpadEast.enabled = false;
+        DpadNorth.enabled = false;
+        DpadWest.enabled = false;
+        DpadSouth.enabled = false;
     }
 }
