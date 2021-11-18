@@ -66,6 +66,14 @@ public class CallInput : MonoBehaviour
 
 
         //Right Trigger
-        
+        RTrig.text = "Trigger Value: " + ff.GetRightTrigger().ToString();
+        if(ff.GetRightTrigger() != 0f)
+        {
+            RTrigIMG.enabled = true;
+        }
+        else
+        {
+            RTrigIMG.enabled = false;
+        }        
     }
 }
