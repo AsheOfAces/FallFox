@@ -7,6 +7,7 @@ public class FFInput : MonoBehaviour
     bool useLinuxWorkaround = false;
     float Lh,Lv; //floats for left thumbstick
     float Rh,Rv; //floats for right thumbstick
+    float Dh,Dv; //floats for D-Pad
 
     void Awake()
     {
@@ -16,7 +17,6 @@ public class FFInput : MonoBehaviour
         }
 
     }
-
 
     public Vector2 GetThumbstickL()
     {
@@ -47,4 +47,20 @@ public class FFInput : MonoBehaviour
         }
         else return Input.GetAxis("RightTrigger");
     }
+    public Vector2 GetDPad()
+    {
+        if(useLinuxWorkaround)        
+        {
+            Dh = Input.GetAxisRaw("DpadHLinux");
+            Dv = Input.GetAxisRaw("DpadVLinux");
+            return new Vector2 (Dh, Dv);   
+        }
+        else
+        {
+            Dh = Input.GetAxisRaw("DpadH");
+            Dv = Input.GetAxisRaw("DpadV");
+            return new Vector2 (Dh, Dv);   
+        }
+    }
+
 }
