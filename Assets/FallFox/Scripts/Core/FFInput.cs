@@ -4,15 +4,27 @@ using UnityEngine;
 
 public class FFInput : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    float Lh,Lv; //floats for left thumbstick
+    float Rh,Rv; //floats for right thumbstick
+    public Vector2 GetThumbstickL()
     {
-        
+        Lh = Input.GetAxisRaw("LeftThumbstickH");
+        Lv = Input.GetAxisRaw("LeftThumbstickV");
+        return new Vector2 (Lh, Lv);
     }
-
-    // Update is called once per frame
-    void Update()
+    public Vector2 GetThumbstickR()
     {
-        
+        //linux workaround thingmajig might come here
+        Rh = Input.GetAxisRaw("RightThumbstickH");
+        Rv = Input.GetAxisRaw("RightThumbstickV");
+        return new Vector2 (Rh, Rv);
+    }
+    public float GetLeftTrigger()
+    {
+        return Input.GetAxis("LeftTrigger");
+    }
+    public float GetRightTrigger()
+    {
+        return Input.GetAxis("RightTrigger");
     }
 }
