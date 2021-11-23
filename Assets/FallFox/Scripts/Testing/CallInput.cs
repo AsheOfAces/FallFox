@@ -30,8 +30,73 @@ public class CallInput : MonoBehaviour
     [SerializeField]Image DpadSouth;
     [SerializeField]Image DpadWest;
     [SerializeField]Image DpadEast;
-    [SerializeField]TMPro.TMP_Text DpadH;
-    [SerializeField]TMPro.TMP_Text DpadV;
+
+    /*Keyboard
+    [SerializeField]Image k0;
+    [SerializeField]Image k1;
+    [SerializeField]Image k2;
+    [SerializeField]Image k3;
+    [SerializeField]Image k4;
+    [SerializeField]Image k5;
+    [SerializeField]Image k6;
+    [SerializeField]Image k7;
+    [SerializeField]Image k8;
+    [SerializeField]Image k9;
+    [SerializeField]Image kQ;
+    [SerializeField]Image kW;
+    [SerializeField]Image kE;
+    [SerializeField]Image kR;
+    [SerializeField]Image kT;
+    [SerializeField]Image kY;
+    [SerializeField]Image kU;
+    [SerializeField]Image kI;
+    [SerializeField]Image kO;
+    [SerializeField]Image kP;
+    [SerializeField]Image kA;
+    [SerializeField]Image kS;
+    [SerializeField]Image kD;
+    [SerializeField]Image kF;
+    [SerializeField]Image kG;
+    [SerializeField]Image kH;
+    [SerializeField]Image kJ;
+    [SerializeField]Image kK;
+    [SerializeField]Image kL;
+    [SerializeField]Image kZ;
+    [SerializeField]Image kX;
+    [SerializeField]Image kC;
+    [SerializeField]Image kV;
+    [SerializeField]Image kB;
+    [SerializeField]Image kN;
+    [SerializeField]Image kM;
+    [SerializeField]Image kF1;
+    [SerializeField]Image kF2;
+    [SerializeField]Image kF3;
+    [SerializeField]Image kF4;
+    [SerializeField]Image kF5;
+    [SerializeField]Image kF6;
+    [SerializeField]Image kF7;
+    [SerializeField]Image kF8;
+    [SerializeField]Image kF9;
+    [SerializeField]Image kF10;
+    [SerializeField]Image kF11;
+    [SerializeField]Image kF12;
+    [SerializeField]Image kAlt;
+    [SerializeField]Image kCtrl;
+    [SerializeField]Image kDel;
+    [SerializeField]Image kShift;
+    [SerializeField]Image kTab;
+    [SerializeField]Image kCaps;
+    [SerializeField]Image kReturn;
+    [SerializeField]Image kSpace;
+    [SerializeField]Image kArrowUp;
+    [SerializeField]Image kArrowDown;
+    [SerializeField]Image kArrowLeft;
+    [SerializeField]Image kArrowRight;*/
+
+    //Mouse Axes
+    [SerializeField]TMPro.TMP_Text MouseH;
+    [SerializeField]TMPro.TMP_Text MouseV;
+
 
     
     // Update is called once per frame
@@ -109,8 +174,10 @@ public class CallInput : MonoBehaviour
         {
             PurgeDpadSprites();
         }
-        DpadH.text = "H: " + ff.GetDPad().x;
-        DpadV.text = "V: " + ff.GetDPad().y;
+
+        //Mouse
+        MouseH.text = "H: " + ff.GetMouse().x.ToString();
+        MouseV.text = "V: " + ff.GetMouse().y.ToString();
     }
 
     void PurgeDpadSprites()
@@ -119,5 +186,10 @@ public class CallInput : MonoBehaviour
         DpadNorth.enabled = false;
         DpadWest.enabled = false;
         DpadSouth.enabled = false;
+    }
+
+    void PurgeKeyboardSprites()
+    {
+
     }
 }
